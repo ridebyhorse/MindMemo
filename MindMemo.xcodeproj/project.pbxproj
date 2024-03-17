@@ -9,19 +9,37 @@
 /* Begin PBXBuildFile section */
 		CB7B20442BA0A7AB00EEEF69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7B20432BA0A7AB00EEEF69 /* AppDelegate.swift */; };
 		CB7B20462BA0A7AB00EEEF69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7B20452BA0A7AB00EEEF69 /* SceneDelegate.swift */; };
-		CB7B20482BA0A7AB00EEEF69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7B20472BA0A7AB00EEEF69 /* ViewController.swift */; };
 		CB7B204D2BA0A7AE00EEEF69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB7B204C2BA0A7AE00EEEF69 /* Assets.xcassets */; };
 		CB7B20502BA0A7AE00EEEF69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB7B204E2BA0A7AE00EEEF69 /* LaunchScreen.storyboard */; };
+		CB7B20592BA0A8C800EEEF69 /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7B20582BA0A8C800EEEF69 /* NoteListViewController.swift */; };
+		CB7B205B2BA0A9BF00EEEF69 /* NoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7B205A2BA0A9BF00EEEF69 /* NoteListView.swift */; };
+		CB7B205E2BA0AA7300EEEF69 /* EditNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7B205D2BA0AA7300EEEF69 /* EditNoteViewController.swift */; };
+		CB7B20602BA0AA9100EEEF69 /* EditNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7B205F2BA0AA9100EEEF69 /* EditNoteView.swift */; };
+		CB7B20622BA1998300EEEF69 /* NoteListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7B20612BA1998300EEEF69 /* NoteListTableViewCell.swift */; };
+		CB7B20672BA19CAF00EEEF69 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7B20662BA19CAF00EEEF69 /* Note.swift */; };
+		CB7B20692BA1A3CE00EEEF69 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB7B20642BA19B8100EEEF69 /* Montserrat-SemiBold.ttf */; };
+		CB7B206A2BA1A3D200EEEF69 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB7B20632BA19B8000EEEF69 /* Montserrat-Regular.ttf */; };
+		CBCA9FE62BA32A630016C292 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA9FE52BA32A630016C292 /* StorageManager.swift */; };
+		CBCA9FE82BA6EBAE0016C292 /* DeleteNoteAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA9FE72BA6EBAE0016C292 /* DeleteNoteAlertController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CB7B20402BA0A7AB00EEEF69 /* MindMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MindMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7B20432BA0A7AB00EEEF69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB7B20452BA0A7AB00EEEF69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CB7B20472BA0A7AB00EEEF69 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CB7B204C2BA0A7AE00EEEF69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB7B204F2BA0A7AE00EEEF69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB7B20512BA0A7AE00EEEF69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB7B20582BA0A8C800EEEF69 /* NoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
+		CB7B205A2BA0A9BF00EEEF69 /* NoteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListView.swift; sourceTree = "<group>"; };
+		CB7B205D2BA0AA7300EEEF69 /* EditNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteViewController.swift; sourceTree = "<group>"; };
+		CB7B205F2BA0AA9100EEEF69 /* EditNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteView.swift; sourceTree = "<group>"; };
+		CB7B20612BA1998300EEEF69 /* NoteListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListTableViewCell.swift; sourceTree = "<group>"; };
+		CB7B20632BA19B8000EEEF69 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		CB7B20642BA19B8100EEEF69 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		CB7B20662BA19CAF00EEEF69 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		CBCA9FE52BA32A630016C292 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		CBCA9FE72BA6EBAE0016C292 /* DeleteNoteAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteNoteAlertController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +72,55 @@
 		CB7B20422BA0A7AB00EEEF69 /* MindMemo */ = {
 			isa = PBXGroup;
 			children = (
+				CB7B205C2BA0A9C400EEEF69 /* Views */,
+				CB7B20572BA0A86700EEEF69 /* ViewControllers */,
+				CB7B20682BA19CBC00EEEF69 /* Model */,
 				CB7B20432BA0A7AB00EEEF69 /* AppDelegate.swift */,
 				CB7B20452BA0A7AB00EEEF69 /* SceneDelegate.swift */,
-				CB7B20472BA0A7AB00EEEF69 /* ViewController.swift */,
 				CB7B204C2BA0A7AE00EEEF69 /* Assets.xcassets */,
-				CB7B204E2BA0A7AE00EEEF69 /* LaunchScreen.storyboard */,
+				CB7B20652BA19B8800EEEF69 /* Font */,
 				CB7B20512BA0A7AE00EEEF69 /* Info.plist */,
 			);
 			path = MindMemo;
+			sourceTree = "<group>";
+		};
+		CB7B20572BA0A86700EEEF69 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CB7B20582BA0A8C800EEEF69 /* NoteListViewController.swift */,
+				CB7B205D2BA0AA7300EEEF69 /* EditNoteViewController.swift */,
+				CBCA9FE72BA6EBAE0016C292 /* DeleteNoteAlertController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CB7B205C2BA0A9C400EEEF69 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CB7B204E2BA0A7AE00EEEF69 /* LaunchScreen.storyboard */,
+				CB7B205A2BA0A9BF00EEEF69 /* NoteListView.swift */,
+				CB7B20612BA1998300EEEF69 /* NoteListTableViewCell.swift */,
+				CB7B205F2BA0AA9100EEEF69 /* EditNoteView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CB7B20652BA19B8800EEEF69 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				CB7B20632BA19B8000EEEF69 /* Montserrat-Regular.ttf */,
+				CB7B20642BA19B8100EEEF69 /* Montserrat-SemiBold.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		CB7B20682BA19CBC00EEEF69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CB7B20662BA19CAF00EEEF69 /* Note.swift */,
+				CBCA9FE52BA32A630016C292 /* StorageManager.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,6 +181,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB7B206A2BA1A3D200EEEF69 /* Montserrat-Regular.ttf in Resources */,
+				CB7B20692BA1A3CE00EEEF69 /* Montserrat-SemiBold.ttf in Resources */,
 				CB7B20502BA0A7AE00EEEF69 /* LaunchScreen.storyboard in Resources */,
 				CB7B204D2BA0A7AE00EEEF69 /* Assets.xcassets in Resources */,
 			);
@@ -134,9 +195,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB7B20482BA0A7AB00EEEF69 /* ViewController.swift in Sources */,
+				CB7B20592BA0A8C800EEEF69 /* NoteListViewController.swift in Sources */,
 				CB7B20442BA0A7AB00EEEF69 /* AppDelegate.swift in Sources */,
 				CB7B20462BA0A7AB00EEEF69 /* SceneDelegate.swift in Sources */,
+				CBCA9FE82BA6EBAE0016C292 /* DeleteNoteAlertController.swift in Sources */,
+				CBCA9FE62BA32A630016C292 /* StorageManager.swift in Sources */,
+				CB7B20672BA19CAF00EEEF69 /* Note.swift in Sources */,
+				CB7B205E2BA0AA7300EEEF69 /* EditNoteViewController.swift in Sources */,
+				CB7B20622BA1998300EEEF69 /* NoteListTableViewCell.swift in Sources */,
+				CB7B20602BA0AA9100EEEF69 /* EditNoteView.swift in Sources */,
+				CB7B205B2BA0A9BF00EEEF69 /* NoteListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +353,7 @@
 				INFOPLIST_FILE = MindMemo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -313,6 +382,7 @@
 				INFOPLIST_FILE = MindMemo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
