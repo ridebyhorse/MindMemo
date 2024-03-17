@@ -9,14 +9,15 @@ import UIKit
 
 class EditNoteView: UIView {
     
-    var onDeleteTap: ((_ note: Note) -> Void)?
+    var onDeleteTap: (() -> Void)?
+    var creatingFirstNote: (() -> Void)?
     private var note: Note?
     
     private let noteNameTextField: UITextField = {
         let noteNameTextField = UITextField()
-        noteNameTextField.placeholder = "Note title"
         noteNameTextField.font = UIFont(name: "Montserrat-SemiBold", size: 24)
         noteNameTextField.textColor = .black
+        noteNameTextField.returnKeyType = .done
         
         return noteNameTextField
     }()
@@ -30,6 +31,7 @@ class EditNoteView: UIView {
         noteTextView.layer.cornerRadius = 12
         noteTextView.layer.borderWidth = 1
         noteTextView.layer.borderColor = UIColor.systemGray.cgColor
+        noteTextView.addDoneButton(title: "Done", target: self, action: #selector(doneTapped))
         
         return noteTextView
     }()
@@ -42,12 +44,12 @@ class EditNoteView: UIView {
         return borderLineBottom
     }()
     
-    private let deleteNoteButton: UIButton = {
+    private let mainButton: UIButton = {
         let deleteNoteButton = UIButton()
         deleteNoteButton.backgroundColor = .black
         deleteNoteButton.setImage(UIImage(systemName: "trash"), for: .normal)
         deleteNoteButton.imageView?.tintColor = .white
-        deleteNoteButton.addTarget(self, action: #selector(deleteNoteButtonTapped), for: .touchUpInside)
+        deleteNoteButton.addTarget(self, action: #selector(mainButtonTapped), for: .touchUpInside)
         
         return deleteNoteButton
     }()
@@ -67,8 +69,8 @@ class EditNoteView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        deleteNoteButton.layer.cornerRadius = deleteNoteButton.frame.width / 2
-        deleteNoteButton.clipsToBounds = true
+        mainButton.layer.cornerRadius = mainButton.frame.width / 2
+        mainButton.clipsToBounds = true
     }
     
     private func configureNoteText() {
@@ -78,18 +80,20 @@ class EditNoteView: UIView {
             noteNameTextField.text = note.name
             noteTextView.text = note.text
         } else {
+            noteNameTextField.textColor = .systemGray
+            noteNameTextField.text = "Note title"
             noteTextView.textColor = .systemGray
             noteTextView.text = "Type here something..."
         }
     }
-    
+
     private func setupUI() {
         backgroundColor = .white
         
         addSubview(noteNameTextField)
         addSubview(noteTextView)
         addSubview(borderLineBottom)
-        addSubview(deleteNoteButton)
+        addSubview(mainButton)
         subviews.forEach({$0.translatesAutoresizingMaskIntoConstraints = false})
         
         NSLayoutConstraint.activate([
@@ -100,40 +104,75 @@ class EditNoteView: UIView {
             borderLineBottom.widthAnchor.constraint(equalTo: widthAnchor),
             borderLineBottom.centerXAnchor.constraint(equalTo: centerXAnchor),
             borderLineBottom.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -92),
-            deleteNoteButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            deleteNoteButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.22),
-            deleteNoteButton.heightAnchor.constraint(equalTo: deleteNoteButton.widthAnchor),
-            deleteNoteButton.centerYAnchor.constraint(equalTo: borderLineBottom.centerYAnchor),
+            mainButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            mainButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.22),
+            mainButton.heightAnchor.constraint(equalTo: mainButton.widthAnchor),
+            mainButton.centerYAnchor.constraint(equalTo: borderLineBottom.centerYAnchor),
             noteTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             noteTextView.topAnchor.constraint(equalTo: noteNameTextField.bottomAnchor, constant: 12),
             noteTextView.trailingAnchor.constraint(equalTo: noteNameTextField.trailingAnchor)
         ])
         
-        if note == nil || note?.name == "Getting Started" {
+        if note == nil {
             borderLineBottom.isHidden = true
-            deleteNoteButton.isHidden = true
+            mainButton.isHidden = true
             NSLayoutConstraint.activate([
                 noteTextView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -18)
             ])
-            if note?.name == "Getting Started" {
-                noteNameTextField.isEnabled = false
-                noteTextView.isEditable = false
-            }
         } else {
             NSLayoutConstraint.activate([
-                noteTextView.bottomAnchor.constraint(equalTo: deleteNoteButton.topAnchor, constant: -12)
+                noteTextView.bottomAnchor.constraint(equalTo: mainButton.topAnchor, constant: -12)
             ])
+        }
+        
+        if note?.name == "Getting Started" {
+            mainButton.setImage(UIImage(systemName: "plus"), for: .normal)
+            noteTextView.isUserInteractionEnabled = false
+            noteNameTextField.isUserInteractionEnabled = false
+            
         }
     }
     
-    @objc private func deleteNoteButtonTapped(_ sender: UIButton) {
-        noteNameTextField.delegate?.textFieldDidEndEditing?(noteNameTextField)
-        noteTextView.delegate?.textViewDidEndEditing?(noteTextView)
-        onDeleteTap?(note!)
+    @objc private func hideKeyboard(_ sender: UITapGestureRecognizer) {
+        noteTextView.endEditing(true)
+    }
+    
+    @objc private func mainButtonTapped(_ sender: UIButton) {
+        if note?.name == "Getting Started" {
+            creatingFirstNote?()
+            borderLineBottom.isHidden = true
+            mainButton.isHidden = true
+            NSLayoutConstraint.activate([
+                noteTextView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -18)
+            ])
+            note = nil
+            configureNoteText()
+            noteTextView.isUserInteractionEnabled = true
+            noteNameTextField.isUserInteractionEnabled = true
+            
+        } else {
+            onDeleteTap?()
+        }
+    }
+    
+    @objc private func doneTapped(_ sender: UIBarButtonItem) {
+        noteTextView.endEditing(true)
     }
 }
 
 extension EditNoteView: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if note == nil || note?.name == "" {
+            textField.text = ""
+            textField.textColor = .black
+        }
+    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if note == nil {
@@ -163,9 +202,27 @@ extension EditNoteView: UITextViewDelegate {
 }
 
 extension EditNoteView: EditNoteViewControllerDelegate {
+    
     func saveNote() -> Note {
         noteNameTextField.delegate?.textFieldDidEndEditing?(noteNameTextField)
         noteTextView.delegate?.textViewDidEndEditing?(noteTextView)
+        if noteNameTextField.text == "Note title" || noteNameTextField.text == "" {
+            note?.name = "No title"
+        }
+        if noteTextView.text == "Type here something..." {
+            note?.text = ""
+        }
         return note!
+    }
+}
+
+extension UITextView {
+
+    func addDoneButton(title: String, target: Any, action: Selector) {
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 44))
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let barButton = UIBarButtonItem(title: title, style: .plain, target: target, action: action)
+        toolBar.setItems([flexible, barButton], animated: false)
+        self.inputAccessoryView = toolBar
     }
 }

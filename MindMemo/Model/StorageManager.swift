@@ -13,7 +13,7 @@ final class StorageManager {
     private var userDefaults = UserDefaults.standard
     private let key = "notes"
     private var currentNoteIndex = 0
-    private let startNote = Note(name: "Getting Started", text: "MindMemo is a good helper to manage your notes. It gives you a quick and simple notepad editing experience when you write notes, memo or message. Go ahead and create your first note on a main screen!")
+    private let startNote = Note(name: "Getting Started", text: "MindMemo is a good helper to manage your notes. It gives you a quick and simple notepad editing experience when you write notes, memo or message. Go ahead and create your first note!")
     
     func setCurrentNoteIndex(_ index: Int?) {
         guard let index else { return }

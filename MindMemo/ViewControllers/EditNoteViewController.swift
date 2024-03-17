@@ -14,12 +14,11 @@ protocol EditNoteViewControllerDelegate: AnyObject {
 class EditNoteViewController: UIViewController {
     
     weak var delegate: EditNoteViewControllerDelegate?
-    private let note: Note?
+    private var note: Note?
     
     init(note: Note?) {
         self.note = note
         super.init(nibName: nil, bundle: nil)
-        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -28,34 +27,43 @@ class EditNoteViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
-        if note?.name != "Getting Started" {
-            let bar = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveAndClose))
-            navigationItem.rightBarButtonItem = bar
-        }
+        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        setupUI()
         super.viewWillAppear(animated)
     }
     
     private func setupUI() {
-        if note != nil {
-            title = "Edit note"
-        } else {
-            title = "New note"
-        }
-        
         let editView = EditNoteView(self, note: note)
         editView.onDeleteTap = deleteNote
+        editView.creatingFirstNote = { [weak self] in
+            self?.title = "New note"
+            let bar = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(self?.saveAndClose))
+            self?.navigationItem.rightBarButtonItem = bar
+        }
         view = editView
+        
+        if note == nil {
+            title = "New note"
+            let bar = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveAndClose))
+            navigationItem.rightBarButtonItem = bar
+        } else if note?.name == "Getting Started" {
+            note = nil
+            title = "Hello!"
+        } else {
+            title = "Edit note"
+            let bar = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveAndClose))
+            navigationItem.rightBarButtonItem = bar
+        }
     }
     
-    private func deleteNote(_ note: Note) {
-        let alert = UIAlertController(title: "Delete note \"\(note.name)\"?", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive) {_ in 
+    private func deleteNote() {
+        let deleteAlert = DeleteNoteAlertController()
+        deleteAlert.onDelete = {
             StorageManager.shared.deleteNote()
             self.navigationController?.popViewController(animated: true)
-        })
-
-        present(alert, animated: true)
+        }
+        present(deleteAlert, animated: true)
     }
     
     @objc private func saveAndClose(_ sender: UIBarButtonItem) {
@@ -68,5 +76,6 @@ class EditNoteViewController: UIViewController {
         }
         navigationController?.popViewController(animated: true)
     }
+    
 }
 

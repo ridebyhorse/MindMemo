@@ -20,6 +20,7 @@
 		CB7B20692BA1A3CE00EEEF69 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB7B20642BA19B8100EEEF69 /* Montserrat-SemiBold.ttf */; };
 		CB7B206A2BA1A3D200EEEF69 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB7B20632BA19B8000EEEF69 /* Montserrat-Regular.ttf */; };
 		CBCA9FE62BA32A630016C292 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA9FE52BA32A630016C292 /* StorageManager.swift */; };
+		CBCA9FE82BA6EBAE0016C292 /* DeleteNoteAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCA9FE72BA6EBAE0016C292 /* DeleteNoteAlertController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		CB7B20642BA19B8100EEEF69 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		CB7B20662BA19CAF00EEEF69 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		CBCA9FE52BA32A630016C292 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		CBCA9FE72BA6EBAE0016C292 /* DeleteNoteAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteNoteAlertController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			children = (
 				CB7B20582BA0A8C800EEEF69 /* NoteListViewController.swift */,
 				CB7B205D2BA0AA7300EEEF69 /* EditNoteViewController.swift */,
+				CBCA9FE72BA6EBAE0016C292 /* DeleteNoteAlertController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				CB7B20592BA0A8C800EEEF69 /* NoteListViewController.swift in Sources */,
 				CB7B20442BA0A7AB00EEEF69 /* AppDelegate.swift in Sources */,
 				CB7B20462BA0A7AB00EEEF69 /* SceneDelegate.swift in Sources */,
+				CBCA9FE82BA6EBAE0016C292 /* DeleteNoteAlertController.swift in Sources */,
 				CBCA9FE62BA32A630016C292 /* StorageManager.swift in Sources */,
 				CB7B20672BA19CAF00EEEF69 /* Note.swift in Sources */,
 				CB7B205E2BA0AA7300EEEF69 /* EditNoteViewController.swift in Sources */,

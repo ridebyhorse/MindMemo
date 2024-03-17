@@ -15,13 +15,6 @@ class NoteListViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.backgroundColor = .white
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-    }
-    
     private func setupUI() {
         let listView = NoteListView(notes: StorageManager.shared.getNotes())
         listView.onTap = goToEditController
